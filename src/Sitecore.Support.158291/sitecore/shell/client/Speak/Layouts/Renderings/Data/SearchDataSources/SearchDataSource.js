@@ -28,7 +28,7 @@
               this.set("showHiddenItems", false);
 
               //Select Media Dialog patch.158291
-              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") != -1) {
+              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") != -1 || document.URL.indexOf("SelectMediaDialog") != -1) {
                   this.set("previousItemsLength", 0);
               }
 
@@ -41,7 +41,7 @@
 
           refresh: function () {
               //Select Media Dialog patch.158291
-              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") != -1) {
+              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") != -1 || document.URL.indexOf("SelectMediaDialog") != -1) {
                   this.set("previousItemsLength", 0);
               }
               this.set("pageIndex", 0);
@@ -216,8 +216,8 @@
               }
 
               //Select Media Dialog patch.158291
-              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") != -1) {
-                  if (this.get("pageIndex") * this.get("pageSize") < this.get("totalItemsCount") && items.length - this.get("previousItemsLength") < this.get("pageSize")) {
+              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") != -1 || document.URL.indexOf("SelectMediaDialog") != -1) {
+                  if ((this.get("pageIndex") + 1) * this.get("pageSize") < this.get("totalItemsCount") && items.length - this.get("previousItemsLength") < this.get("pageSize")) {
                       this.next();
                   }
               }
@@ -267,14 +267,14 @@
 
           afterRender: function () {
               //Select Media Dialog patch.158291
-              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") == -1) {
+              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") == -1 && document.URL.indexOf("SelectMediaDialog") == -1) {
                   this.refresh();
               }
           },
 
           refresh: function () {
               //Select Media Dialog patch.158291
-              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") == -1) {
+              if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") == -1 && document.URL.indexOf("SelectMediaDialog") == -1) {
                   this.model.refresh();
               }
           },
