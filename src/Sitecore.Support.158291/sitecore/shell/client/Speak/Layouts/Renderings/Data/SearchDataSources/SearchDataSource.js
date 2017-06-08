@@ -275,7 +275,7 @@
           refresh: function () {
               //Select Media Dialog patch.158291
               if (document.URL.indexOf("Sitecore.Shell.Applications.Media.MediaBrowser") == -1) {
-                  this.refresh();
+                  this.model.refresh();
               }
           },
 
